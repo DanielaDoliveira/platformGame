@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Platformer.Assets.Game.Scripts.Player.Enum;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -11,18 +13,14 @@ namespace Platformer.Assets.Game.Scripts.Player
     
        [SerializeField] private float _speed;
        private float _movement;
-        void Start()
-        {
-            
-        }
+       private PlayerJump _playerJump;
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+       private void Start()
+       {
+           _playerJump = GetComponent<PlayerJump>();
+       }
 
-        private void FixedUpdate()
+       private void FixedUpdate()
         {
             Move();
             Flip();
@@ -32,17 +30,46 @@ namespace Platformer.Assets.Game.Scripts.Player
         {
          _movement = Input.GetAxis("Horizontal");
          Player._Rigidbody2D.velocity = new Vector2(_movement * _speed,  Player._Rigidbody2D.velocity.y);
-
+         
+    
         }
 
         void Flip()
         {
-            transform.eulerAngles = _movement switch
+           
+            switch (_movement)
             {
-                > 0 => new Vector3(0, 0, 0),
-                < 0 => new Vector3(0, 180, 0),
-                _ => transform.eulerAngles
-            };
+                case (> 0):
+                {
+                    if (!_playerJump.GetJumping())
+                    {
+                        PlayerAnimator.instance.Animate(PlayerEnum.walk);
+                       
+                    }
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    
+                    break;
+                }
+                case (< 0):
+                {
+                    if (!_playerJump.GetJumping())
+                    {
+                        PlayerAnimator.instance.Animate(PlayerEnum.walk);
+                       
+                    }
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    break;
+                }
+                default:
+                {
+                    if (!_playerJump.GetJumping())
+                    {
+                        PlayerAnimator.instance.Animate(PlayerEnum.idle);
+                        
+                    }
+                    break;
+                }
+            }
         }
     }
 
