@@ -5,5 +5,6 @@ namespace Platformer.Assets.Game.Scripts.Player.Enum
         idle = 0,
         walk = 1,
         jump = 2,
+        attack = 3,
     }
 }

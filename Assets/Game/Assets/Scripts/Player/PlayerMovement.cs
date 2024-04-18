@@ -14,10 +14,11 @@ namespace Platformer.Assets.Game.Scripts.Player
        [SerializeField] private float _speed;
        private float _movement;
        private PlayerJump _playerJump;
-
+       private PlayerAttack _playerAttack;
        private void Start()
        {
            _playerJump = GetComponent<PlayerJump>();
+           _playerAttack = GetComponent<PlayerAttack>();
        }
 
        private void FixedUpdate()
@@ -41,7 +42,7 @@ namespace Platformer.Assets.Game.Scripts.Player
             {
                 case (> 0):
                 {
-                    if (!_playerJump.GetJumping())
+                    if (!_playerJump.GetJumping() && !_playerAttack.GetAttacking())
                     {
                         PlayerAnimator.instance.Animate(PlayerEnum.walk);
                        
@@ -52,7 +53,7 @@ namespace Platformer.Assets.Game.Scripts.Player
                 }
                 case (< 0):
                 {
-                    if (!_playerJump.GetJumping())
+                    if (!_playerJump.GetJumping() && !_playerAttack.GetAttacking())
                     {
                         PlayerAnimator.instance.Animate(PlayerEnum.walk);
                        
@@ -62,7 +63,7 @@ namespace Platformer.Assets.Game.Scripts.Player
                 }
                 default:
                 {
-                    if (!_playerJump.GetJumping())
+                    if (!_playerJump.GetJumping() && !_playerAttack.GetAttacking())
                     {
                         PlayerAnimator.instance.Animate(PlayerEnum.idle);
                         
