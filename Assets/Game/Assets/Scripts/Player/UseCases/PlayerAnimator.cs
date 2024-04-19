@@ -3,12 +3,12 @@ using Platformer.Assets.Game.Scripts.Player.Enum;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Platformer.Assets.Game.Scripts.Player
+namespace Platformer.Assets.Game.Scripts.Player.UseCases
 {
     public class PlayerAnimator : MonoBehaviour
     {
-        private Animator _animator;
-        public PlayerEnum PlayerType;
+     
+        
         public static PlayerAnimator instance;
 
         private void Awake()
@@ -21,7 +21,7 @@ namespace Platformer.Assets.Game.Scripts.Player
 
         void Start()
         {
-            _animator = GetComponentInChildren<Animator>();
+          
            
         }
 
@@ -29,7 +29,7 @@ namespace Platformer.Assets.Game.Scripts.Player
 
         public void Animate(PlayerEnum playerType)
         {
-            _animator.SetInteger("transition",playerType.GetHashCode());
+            Singleton.Player.Animator.SetInteger("transition",playerType.GetHashCode());
  
         }
     }

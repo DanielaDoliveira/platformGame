@@ -4,7 +4,7 @@ using UnityEngine.PlayerLoop;
 using System.Collections;
 using Platformer.Assets.Game.Scripts.Player.Enum;
 
-namespace Platformer.Assets.Game.Scripts.Player
+namespace Platformer.Assets.Game.Scripts.Player.UseCases
 {
     
     
@@ -12,24 +12,19 @@ namespace Platformer.Assets.Game.Scripts.Player
     {
         [SerializeField]private Transform point;
         [SerializeField] private float radius;
-        private bool is_attacking;
+      
         private float time_attack = 0.22f;
 
-
-        public bool GetAttacking()
+        public void Start()
         {
-            return is_attacking;
-        }
-        public void Update()
-        {
-           Attack();
+            Singleton.Player.Is_Attacking = false;
         }
 
-        void Attack()
+
+        public void Execute()
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                is_attacking = true;
+          
+                Singleton.Player.Is_Attacking = true;
                 PlayerAnimator.instance.Animate(PlayerEnum.attack);
                 Collider2D _hit = Physics2D.OverlapCircle(point.position,radius);
                 if (_hit != null)
@@ -38,14 +33,14 @@ namespace Platformer.Assets.Game.Scripts.Player
                 }
 
                 StartCoroutine(OnAttack());
-            }
+            
           
         }
 
         IEnumerator OnAttack()
         {
             yield return new WaitForSeconds(time_attack);
-            is_attacking = false;
+            Singleton.Player.Is_Attacking = false;
             
         }
 

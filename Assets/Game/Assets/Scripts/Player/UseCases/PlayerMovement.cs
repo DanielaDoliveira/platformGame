@@ -5,44 +5,50 @@ using Platformer.Assets.Game.Scripts.Player.Enum;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
-
-namespace Platformer.Assets.Game.Scripts.Player
+using Platformer.Assets.Game.Scripts.Player.Singleton;
+namespace Platformer.Assets.Game.Scripts.Player.UseCases
 {
     public class PlayerMovement : MonoBehaviour
     {
     
-       [SerializeField] private float _speed;
-       private float _movement;
-       private PlayerJump _playerJump;
-       private PlayerAttack _playerAttack;
+    
+      
+    
        private void Start()
        {
-           _playerJump = GetComponent<PlayerJump>();
-           _playerAttack = GetComponent<PlayerAttack>();
+           
+           Singleton.Player.Speed = 5f;
        }
 
-       private void FixedUpdate()
+     
+
+        public void Move()
+        {
+         Singleton.Player.Movement = Input.GetAxis("Horizontal");
+      
+         Singleton.Player._Rigidbody2D.velocity = 
+             new Vector2(
+                 Singleton.Player.Movement * Singleton.Player.Speed, 
+                 Singleton.Player._Rigidbody2D.velocity.y
+                 );
+         
+    
+        }
+
+        public void Execute()
         {
             Move();
             Flip();
         }
 
-        void Move()
-        {
-         _movement = Input.GetAxis("Horizontal");
-         Player._Rigidbody2D.velocity = new Vector2(_movement * _speed,  Player._Rigidbody2D.velocity.y);
-         
-    
-        }
-
         void Flip()
         {
            
-            switch (_movement)
+            switch ( Singleton.Player.Movement)
             {
                 case (> 0):
                 {
-                    if (!_playerJump.GetJumping() && !_playerAttack.GetAttacking())
+                    if (!Singleton.Player.IsJumping && !Singleton.Player.Is_Attacking)
                     {
                         PlayerAnimator.instance.Animate(PlayerEnum.walk);
                        
@@ -53,7 +59,7 @@ namespace Platformer.Assets.Game.Scripts.Player
                 }
                 case (< 0):
                 {
-                    if (!_playerJump.GetJumping() && !_playerAttack.GetAttacking())
+                    if (!Singleton.Player.IsJumping && !Singleton.Player.Is_Attacking)
                     {
                         PlayerAnimator.instance.Animate(PlayerEnum.walk);
                        
@@ -63,7 +69,7 @@ namespace Platformer.Assets.Game.Scripts.Player
                 }
                 default:
                 {
-                    if (!_playerJump.GetJumping() && !_playerAttack.GetAttacking())
+                    if (!Singleton.Player.IsJumping && !Singleton.Player.Is_Attacking)
                     {
                         PlayerAnimator.instance.Animate(PlayerEnum.idle);
                         
