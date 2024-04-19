@@ -26,15 +26,20 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
           
                 Singleton.Player.Is_Attacking = true;
                 PlayerAnimator.instance.Animate(PlayerEnum.attack);
-                Collider2D _hit = Physics2D.OverlapCircle(point.position,radius);
-                if (_hit != null)
-                {
-                    Debug.Log(_hit.name);
-                }
+                VerifyCollision();
 
                 StartCoroutine(OnAttack());
             
           
+        }
+
+        private void VerifyCollision()
+        {
+            Collider2D _hit = Physics2D.OverlapCircle(point.position,radius);
+            if (_hit != null)
+            {
+                Debug.Log(_hit.name);
+            }
         }
 
         IEnumerator OnAttack()
