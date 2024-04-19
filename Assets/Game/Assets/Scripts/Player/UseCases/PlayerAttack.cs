@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using System.Collections;
+using Game.Assets.Scripts.Enemies;
 using Platformer.Assets.Game.Scripts.Player.Enum;
 
 namespace Platformer.Assets.Game.Scripts.Player.UseCases
@@ -14,10 +15,11 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
         [SerializeField] private float radius;
       
         private float time_attack = 0.22f;
-
+        public LayerMask Enemy_Layer;
         public void Start()
         {
             Singleton.Player.Is_Attacking = false;
+            
         }
 
 
@@ -35,10 +37,13 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
 
         private void VerifyCollision()
         {
-            Collider2D _hit = Physics2D.OverlapCircle(point.position,radius);
+
+            Collider2D _hit = Physics2D.OverlapCircle(point.position,radius,Enemy_Layer);
+       
             if (_hit != null)
             {
                 Debug.Log(_hit.name);
+                _hit.GetComponent<Slime>().OnHit();
             }
         }
 

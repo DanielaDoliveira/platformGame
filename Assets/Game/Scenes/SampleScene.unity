@@ -244,7 +244,8 @@ GameObject:
   - component: {fileID: 423727165}
   - component: {fileID: 423727166}
   - component: {fileID: 423727167}
-  m_Layer: 0
+  - component: {fileID: 423727168}
+  m_Layer: 6
   m_Name: Enemy_Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +336,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1536830217
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 122826114, guid: 7bcc76a468c4f4beba829a338217fdb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -408,6 +409,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 8
+  _enemyAnimator: {fileID: 0}
 --- !u!95 &423727167
 Animator:
   serializedVersion: 5
@@ -429,6 +431,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &423727168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423727161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9e6129f044e4a63a12a1a544ca4c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &472574698
 GameObject:
   m_ObjectHideFlags: 0
@@ -6509,7 +6523,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 15024691
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 3
   m_Sprite: {fileID: 461623595, guid: df81ede7d02c44e87af107ff9ff2eb6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6991,6 +7005,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point: {fileID: 1997853341}
   radius: 0.29
+  Enemy_Layer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &1295406382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7317,7 +7334,7 @@ GameObject:
   m_IsActive: 0
 --- !u!4 &1840232591
 Transform:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

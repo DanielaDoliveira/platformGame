@@ -10,6 +10,7 @@ namespace Game.Assets.Scripts.Enemies
     {
         protected  Rigidbody2D rb2d;
         protected float speed;
+        public static LayerMask EnemyLayer;
 
         public void Start()
         {

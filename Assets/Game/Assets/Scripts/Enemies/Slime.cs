@@ -9,14 +9,17 @@ namespace Game.Assets.Scripts.Enemies
         [SerializeField]private Transform point;
         [SerializeField] private float radius;
         [SerializeField]private LayerMask layer;
-
-
-
+        [SerializeField] private EnemyAnimator _enemyAnimator;
+        private int health;
+     
 
         void Start()
         {
             base.Start();
             speed = -1.5f;
+            health = 3;
+            EnemyLayer = LayerMask.NameToLayer("ENEMY");
+            _enemyAnimator = GetComponent<EnemyAnimator>();
         }
 
         private void FixedUpdate()
@@ -38,12 +41,12 @@ namespace Game.Assets.Scripts.Enemies
         void SlimeBehaviour()
         {
             speed = -speed;
-            SlimeFLip();
+            SlimeFlip();
            
          
         }
 
-        void SlimeFLip()
+        void SlimeFlip()
         {
             float rotation_y = transform.position.y;
             if (transform.eulerAngles.y == 0)
@@ -64,6 +67,17 @@ namespace Game.Assets.Scripts.Enemies
         {
             Gizmos.DrawWireSphere(point.position,radius);
            
+        }
+
+        public void OnHit()
+        {
+            _enemyAnimator.Hit();
+            health-=1;
+            if (health <= 0)
+            {
+                _enemyAnimator.Death();
+                Destroy(gameObject,0.3f);
+            }
         }
     }
 }
