@@ -1,5 +1,7 @@
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Assets.Scripts.Enemies
@@ -71,13 +73,23 @@ namespace Game.Assets.Scripts.Enemies
 
         public void OnHit()
         {
+         
             _enemyAnimator.Hit();
             health-=1;
             if (health <= 0)
             {
-                _enemyAnimator.Death();
-                Destroy(gameObject,0.3f);
+
+                StartCoroutine(TimeToDestroy());
             }
         }
+        IEnumerator TimeToDestroy()
+        {
+            speed = 0;
+            _enemyAnimator.Death();
+            yield return new WaitForSeconds(0.267f);
+            Destroy(gameObject);
+        }
+
+       
     }
 }

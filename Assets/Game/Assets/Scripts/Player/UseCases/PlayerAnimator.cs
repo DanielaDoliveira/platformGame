@@ -32,5 +32,15 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
             Singleton.Player.Animator.SetInteger("transition",playerType.GetHashCode());
  
         }
+
+        public void Hit()
+        {
+            Singleton.Player.Animator.SetTrigger("hit");
+        }
+
+        public void Dead()
+        {
+            Singleton.Player.Animator.SetTrigger("dead");
+        }
     }
 }

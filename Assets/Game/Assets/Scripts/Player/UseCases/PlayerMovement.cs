@@ -1,23 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using Platformer.Assets.Game.Scripts.Player.Enum;
-using Unity.VisualScripting;
+
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using Platformer.Assets.Game.Scripts.Player.Singleton;
 namespace Platformer.Assets.Game.Scripts.Player.UseCases
 {
     public class PlayerMovement : MonoBehaviour
     {
-    
-    
-      
+
+
+       
     
        private void Start()
        {
            
            Singleton.Player.Speed = 5f;
+        
        }
 
      
@@ -25,7 +22,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
         public void Move()
         {
          Singleton.Player.Movement = Input.GetAxis("Horizontal");
-      
+  
          Singleton.Player._Rigidbody2D.velocity = 
              new Vector2(
                  Singleton.Player.Movement * Singleton.Player.Speed, 

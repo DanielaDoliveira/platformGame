@@ -34,6 +34,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases.Controller
         {
             if (Input.GetButtonDown("Jump"))
             {
+                
                 _playerJump.Execute();
             }
 
