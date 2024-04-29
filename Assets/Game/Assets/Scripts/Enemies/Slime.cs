@@ -11,29 +11,30 @@ namespace Game.Assets.Scripts.Enemies
         [SerializeField]private Transform point;
         [SerializeField] private float radius;
         [SerializeField]private LayerMask layer;
-        [SerializeField] private EnemyAnimator _enemyAnimator;
-        private int health;
+      
+
      
 
         void Start()
         {
             base.Start();
-            speed = -1.5f;
-            health = 3;
+            Speed = -1.5f;
+            Health = 3;
             EnemyLayer = LayerMask.NameToLayer("ENEMY");
-            _enemyAnimator = GetComponent<EnemyAnimator>();
+           
+
         }
 
         private void FixedUpdate()
         {
-            rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+            Rb2d.velocity = new Vector2(Speed, Rb2d.velocity.y);
             OnCollision();
         }
 
          void OnCollision()
         {
-            Collider2D _hit = Physics2D.OverlapCircle(point.position,radius,layer);
-            if (_hit != null)
+            Collider2D hit = Physics2D.OverlapCircle(point.position,radius,layer);
+            if (hit != null)
             {
               SlimeBehaviour();
             }
@@ -42,7 +43,7 @@ namespace Game.Assets.Scripts.Enemies
          
         void SlimeBehaviour()
         {
-            speed = -speed;
+            Speed = -Speed;
             SlimeFlip();
            
          
@@ -50,19 +51,22 @@ namespace Game.Assets.Scripts.Enemies
 
         void SlimeFlip()
         {
-            float rotation_y = transform.position.y;
-            if (transform.eulerAngles.y == 0)
+            float rotationY = transform.position.y;
+            //condition ? consequent : alternative
+            float angle = transform.eulerAngles.y;
+     
+            if (angle == 0)
             {
-                rotation_y = 180;
+                rotationY = 180;
                
                 
             }
-            else if (transform.eulerAngles.y == 180)
+            else if (angle == 180)
             {
-                rotation_y = 0;
+                rotationY = 0;
               
             }
-            transform.eulerAngles = new Vector3(0, rotation_y, 0);
+            transform.eulerAngles = new Vector3(0, rotationY, 0);
         }
         
         private void OnDrawGizmosSelected()
@@ -70,25 +74,26 @@ namespace Game.Assets.Scripts.Enemies
             Gizmos.DrawWireSphere(point.position,radius);
            
         }
+        IEnumerator TimeToDestroy()
+        {
+            Speed = 0;
+            Enemy_animator.Death();
+            yield return new WaitForSeconds(0.267f);
+            Destroy(gameObject);
+        }
 
         public void OnHit()
         {
          
-            _enemyAnimator.Hit();
-            health-=1;
-            if (health <= 0)
+            Enemy_animator.Hit();
+            Health-=1;
+            if (Health <= 0)
             {
 
-                StartCoroutine(TimeToDestroy());
+                StartCoroutine(nameof(TimeToDestroy));
             }
         }
-        IEnumerator TimeToDestroy()
-        {
-            speed = 0;
-            _enemyAnimator.Death();
-            yield return new WaitForSeconds(0.267f);
-            Destroy(gameObject);
-        }
+    
 
        
     }

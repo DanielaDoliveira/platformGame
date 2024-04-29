@@ -8,14 +8,16 @@ namespace Game.Assets.Scripts.Enemies
     
     public class Enemy: MonoBehaviour
     {
-        protected  Rigidbody2D rb2d;
-        protected float speed;
+        protected  Rigidbody2D Rb2d;
+        protected float Speed;
         public static LayerMask EnemyLayer;
-
+        protected int Health;
+        protected EnemyAnimator Enemy_animator;
         public void Start()
         {
          
-            rb2d = GetComponent<Rigidbody2D>();
+            Rb2d = GetComponent<Rigidbody2D>();
+            Enemy_animator = GetComponent<EnemyAnimator>();
         }
         
     }
