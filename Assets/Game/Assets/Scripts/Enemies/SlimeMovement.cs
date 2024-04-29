@@ -2,11 +2,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace Game.Assets.Scripts.Enemies
 {
-    public class Slime: Enemy
+    public class SlimeMovement: Enemy
     {
         [SerializeField]private Transform point;
         [SerializeField] private float radius;
@@ -19,13 +20,19 @@ namespace Game.Assets.Scripts.Enemies
         {
             base.Start();
             Speed = -1.5f;
-            Health = 3;
+         
             EnemyLayer = LayerMask.NameToLayer("ENEMY");
            
 
         }
 
         private void FixedUpdate()
+        {
+            Movement();
+        }
+
+
+        public void Movement()
         {
             Rb2d.velocity = new Vector2(Speed, Rb2d.velocity.y);
             OnCollision();
@@ -52,7 +59,7 @@ namespace Game.Assets.Scripts.Enemies
         void SlimeFlip()
         {
             float rotationY = transform.position.y;
-            //condition ? consequent : alternative
+           
             float angle = transform.eulerAngles.y;
      
             if (angle == 0)
@@ -74,26 +81,8 @@ namespace Game.Assets.Scripts.Enemies
             Gizmos.DrawWireSphere(point.position,radius);
            
         }
-        IEnumerator TimeToDestroy()
-        {
-            Speed = 0;
-            Enemy_animator.Death();
-            yield return new WaitForSeconds(0.267f);
-            Destroy(gameObject);
-        }
+     
 
-        public void OnHit()
-        {
-         
-            Enemy_animator.Hit();
-            Health-=1;
-            if (Health <= 0)
-            {
-
-                StartCoroutine(nameof(TimeToDestroy));
-            }
-        }
-    
 
        
     }

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using System.Collections;
 using Game.Assets.Scripts.Enemies;
+
 using Platformer.Assets.Game.Scripts.Player.Enum;
 
 namespace Platformer.Assets.Game.Scripts.Player.UseCases
@@ -43,7 +44,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
             if (_hit != null)
             {
                 Debug.Log(_hit.name);
-                _hit.GetComponent<Slime>().OnHit();
+                _hit.GetComponent<SlimeLife>().OnHit();
             }
         }
 
