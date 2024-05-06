@@ -6049,9 +6049,9 @@ GameObject:
   m_Component:
   - component: {fileID: 571155897}
   m_Layer: 6
-  m_Name: Ray
+  m_Name: ray_front
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6063,7 +6063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571155896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.82, y: -0.118, z: -0}
+  m_LocalPosition: {x: 0.834, y: -0.118, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6283,6 +6283,7 @@ GameObject:
   - component: {fileID: 825556697}
   - component: {fileID: 825556696}
   - component: {fileID: 825556699}
+  - component: {fileID: 825556700}
   m_Layer: 6
   m_Name: Enemy_Goblin
   m_TagString: Untagged
@@ -6349,12 +6350,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825556693}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.49, y: -3.6, z: 0}
   m_LocalScale: {x: 0.8244964, y: 0.8244964, z: 0.8244964}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 571155897}
+  - {fileID: 2026642604}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6454,10 +6456,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde59a7a7fc7c425899b90f82fbe7d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isRight: 1
-  _isFront: 0
-  maxVision: 3
+  maxVision: 5
   point: {fileID: 571155897}
+  pointBehind: {fileID: 2026642604}
+--- !u!95 &825556700
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825556693}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f1cbb7aaec05743e4b1f2785a71e15db, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1072790363
 GameObject:
   m_ObjectHideFlags: 0
@@ -7482,6 +7504,37 @@ Transform:
   m_Father: {fileID: 1295406373}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2026642603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2026642604}
+  m_Layer: 6
+  m_Name: ray_behind
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2026642604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026642603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.89, y: -0.118, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 825556695}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2060561932
 GameObject:
   m_ObjectHideFlags: 0
@@ -7577,6 +7630,10 @@ PrefabInstance:
     - target: {fileID: 3896192886258185307, guid: 3a20aaeec59384a9c9b566cfd2b59ad7, type: 3}
       propertyPath: m_Name
       value: Enemy_Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896192886258185307, guid: 3a20aaeec59384a9c9b566cfd2b59ad7, type: 3}
+      propertyPath: m_TagString
+      value: ENEMY
       objectReference: {fileID: 0}
     - target: {fileID: 9065513785346854474, guid: 3a20aaeec59384a9c9b566cfd2b59ad7, type: 3}
       propertyPath: m_RootOrder

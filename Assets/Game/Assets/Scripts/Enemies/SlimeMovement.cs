@@ -12,11 +12,9 @@ namespace Game.Assets.Scripts.Enemies
         [SerializeField]private Transform point;
         [SerializeField] private float radius;
         [SerializeField]private LayerMask layer;
-      
 
-     
 
-        void Start()
+        private new void Start()
         {
             base.Start();
             Speed = -1.5f;
