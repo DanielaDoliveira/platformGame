@@ -22,12 +22,13 @@ namespace Game.Assets.Scripts.Enemies
         void Start()
         {
             Health = 2;
+            _enemyLife.Health = Health;
         }
         
         public void OnHit()
         {
-            Health -= 1;
-            _enemyLife.OnHit(GetComponent<SlimeLife>().Health,Speed,GetComponent<EnemyAnimator>());
+          
+            _enemyLife.OnHit(Speed,GetComponent<EnemyAnimator>());
         }
 
        

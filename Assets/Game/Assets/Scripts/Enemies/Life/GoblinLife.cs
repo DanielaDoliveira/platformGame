@@ -1,3 +1,4 @@
+using UnityEngine;
 using Zenject;
 
 namespace Game.Assets.Scripts.Enemies
@@ -15,12 +16,15 @@ namespace Game.Assets.Scripts.Enemies
         void Start()
         {
             Health = 3;
+            _enemyLife.Health = Health;
+        
         }
         
         public void OnHit()
         {
-            Health -= 1;
-            _enemyLife.OnHit(Health,Speed,GetComponent<EnemyAnimator>());
+       
+            _enemyLife.OnHit(Speed,GetComponent<EnemyAnimator>());
+        
         }
     }
 }
