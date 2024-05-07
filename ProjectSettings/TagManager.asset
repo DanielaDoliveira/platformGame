@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - ENEMY
+  - ship
+  - asteroid
+  - Goblin
+  - Slime
   layers:
   - Default
   - TransparentFX

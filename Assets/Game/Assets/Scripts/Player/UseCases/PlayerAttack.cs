@@ -39,13 +39,35 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
         private void VerifyCollision()
         {
 
-            Collider2D _hit = Physics2D.OverlapCircle(point.position,radius,Enemy_Layer);
+            Collider2D hit = Physics2D.OverlapCircle(point.position,radius,Enemy_Layer);
+          
        
-            if (_hit != null)
+            if (hit != null)
             {
-                Debug.Log(_hit.name);
-                _hit.GetComponent<SlimeLife>().OnHit();
+                
+                switch (hit.tag)
+                {
+                    case "Slime":
+                        hit.GetComponent<SlimeLife>().OnHit();
+                        break;
+                    case "Goblin":
+                        hit.GetComponent<GoblinLife>().OnHit();
+                        break;
+                    default:
+                       
+                        break;
+                } 
+                
             }
+         
+// Debug.Log(_hit.name);
+            // if (_hit.CompareTag("Slime"))
+            //     _hit.GetComponent<SlimeLife>().OnHit();
+            //
+            // else if( _hit.CompareTag("Goblin"))
+            // _hit.GetComponent<GoblinLife>().OnHit();
+            // else{}
+           
         }
 
         IEnumerator OnAttack()

@@ -13,20 +13,26 @@ namespace Game.Assets.Scripts.Enemies
         }
 
 
+
         public void Hit()
         {
-            _animator.SetTrigger("hit");
+            GetComponent<Animator>().SetTrigger("hit");
         }
 
         public void Death()
         {
-             _animator.SetTrigger("dead");
+            GetComponent<Animator>().SetTrigger("dead");
 
         }
         public void Animate(GoblinEnum enemyState)
         {
-           _animator.SetInteger("transition",enemyState.GetHashCode());
+            GetComponent<Animator>().SetInteger("transition",enemyState.GetHashCode());
  
+        }
+
+        public void DestroyObject()
+        {
+            Destroy(gameObject);
         }
 
     }

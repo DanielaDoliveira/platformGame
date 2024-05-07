@@ -16,7 +16,8 @@ namespace Game.Assets.Scripts.Enemies
         private Vector3 _rayPosition;
         private Vector2 _direction;
         private float _stopDistance = 0.8f;
-        
+   
+
        private void Start()
         {
             base.Start();
@@ -47,6 +48,7 @@ namespace Game.Assets.Scripts.Enemies
            
             if (_isFront)
             {
+               
                 Enemy_animator.Animate(GoblinEnum.Walk);
                 VerifyPosition();
              if(_isRight)
@@ -111,6 +113,8 @@ namespace Game.Assets.Scripts.Enemies
             Gizmos.DrawRay(point.position,_direction *maxVision);
             Gizmos.DrawRay(pointBehind.position,- _direction *maxVision);
         }
+
+        
     }  
 }
 

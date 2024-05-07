@@ -79,9 +79,8 @@ namespace Game.Assets.Scripts.Enemies
             Gizmos.DrawWireSphere(point.position,radius);
            
         }
-     
 
 
-       
+        
     }
 }

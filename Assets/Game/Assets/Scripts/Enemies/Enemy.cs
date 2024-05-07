@@ -13,6 +13,8 @@ namespace Game.Assets.Scripts.Enemies
         public static LayerMask EnemyLayer;
         protected int Health;
         protected EnemyAnimator Enemy_animator;
+      
+     
         public void Start()
         {
          
@@ -20,5 +22,5 @@ namespace Game.Assets.Scripts.Enemies
             Enemy_animator = GetComponent<EnemyAnimator>();
         }
         
-    }
+    }   
 }
