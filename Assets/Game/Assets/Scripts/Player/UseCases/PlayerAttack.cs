@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using System.Collections;
 using Game.Assets.Scripts.Enemies;
-
 using Platformer.Assets.Game.Scripts.Player.Enum;
 
 namespace Platformer.Assets.Game.Scripts.Player.UseCases
@@ -17,6 +16,8 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
       
         private float time_attack = 0.22f;
         public LayerMask Enemy_Layer;
+        
+
         public void Start()
         {
             Singleton.Player.Is_Attacking = false;
@@ -35,8 +36,8 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
             
           
         }
-
-        private void VerifyCollision()
+    
+        public void VerifyCollision()
         {
 
             Collider2D hit = Physics2D.OverlapCircle(point.position,radius,Enemy_Layer);
@@ -60,17 +61,10 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                 
             }
          
-// Debug.Log(_hit.name);
-            // if (_hit.CompareTag("Slime"))
-            //     _hit.GetComponent<SlimeLife>().OnHit();
-            //
-            // else if( _hit.CompareTag("Goblin"))
-            // _hit.GetComponent<GoblinLife>().OnHit();
-            // else{}
-           
+
         }
 
-        IEnumerator OnAttack()
+       public IEnumerator OnAttack()
         {
             yield return new WaitForSeconds(time_attack);
             Singleton.Player.Is_Attacking = false;

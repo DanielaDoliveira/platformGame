@@ -76,7 +76,7 @@ namespace Game.Assets.Scripts.Enemies
             if (isHitNotNull && hit.transform.CompareTag("Player"))
             {
                
-                Debug.Log("colidiu frente");
+         
                 _isFront = true;
                 var distance = Vector2.Distance(transform.position, hit.transform.position);
                 if (distance <= _stopDistance)

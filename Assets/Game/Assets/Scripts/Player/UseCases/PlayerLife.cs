@@ -21,9 +21,9 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
            
         }
 
-        public void PlayerDamage(int _health)
+        public void PlayerDamage(int health)
         {
-            Health -= _health;
+            Health -= health;
             if (Health <= 0 && !_recovery)
             {
                 _recovery = true;
@@ -35,7 +35,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
         {
             if (other.gameObject.CompareTag("ENEMY"))
             {
-                Debug.Log("COLIDIU");
+              
                 OnHit();
             }
         }

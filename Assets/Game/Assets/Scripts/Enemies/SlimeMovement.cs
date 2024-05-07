@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+
 namespace Game.Assets.Scripts.Enemies
 {
     public class SlimeMovement: Enemy
@@ -12,7 +13,6 @@ namespace Game.Assets.Scripts.Enemies
         [SerializeField]private Transform point;
         [SerializeField] private float radius;
         [SerializeField]private LayerMask layer;
-
 
         private new void Start()
         {

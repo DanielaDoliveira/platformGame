@@ -1,6 +1,8 @@
 using System;
+
 using Unity.VisualScripting;
 using UnityEngine;
+using Zenject;
 
 namespace Platformer.Assets.Game.Scripts.Player.UseCases.Controller
 {
@@ -8,9 +10,11 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases.Controller
     {
 
         private PlayerJump _playerJump;
-        private PlayerAttack _playerAttack;
+         private PlayerAttack _playerAttack;
         private PlayerMovement _playerMovement;
       
+
+       
 
         private void Start()
         {

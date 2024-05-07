@@ -17,12 +17,11 @@ namespace Game.Assets.Scripts.Enemies
         {
             Health = 3;
             _enemyLife.Health = Health;
-        
         }
         
         public void OnHit()
         {
-       
+            Debug.Log("Goblin "+Health);
             _enemyLife.OnHit(Speed,GetComponent<EnemyAnimator>());
         
         }

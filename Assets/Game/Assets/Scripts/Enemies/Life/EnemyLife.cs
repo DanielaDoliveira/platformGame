@@ -2,6 +2,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Assets.Scripts.Enemies
 {
@@ -13,6 +14,8 @@ namespace Game.Assets.Scripts.Enemies
         // ReSharper disable Unity.PerformanceAnalysis
         public int Health { get; set; }
         public float Speed { get; set; }
+        public bool isDead = false;
+    
 
         public IEnumerator TimeToDestroy(float speed,EnemyAnimator enemyAnimator)
         {
@@ -32,10 +35,12 @@ namespace Game.Assets.Scripts.Enemies
        
             Health -= 1;
             
-            enemyAnimator.Hit();
-        Debug.Log("health"+Health);
+           if(!isDead) 
+               enemyAnimator.Hit();
+    
             if (Health <= 0)
             {
+                isDead = true;
                 enemyAnimator.StartCoroutine(TimeToDestroy(Speed, enemyAnimator));
             }
         }
