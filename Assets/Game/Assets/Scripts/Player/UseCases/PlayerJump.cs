@@ -46,7 +46,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.layer == 3)
+            if (other.gameObject.layer == 3 || other.gameObject.layer == 8)
             {
                 Singleton.Player.IsJumping = false;
             }

@@ -9,6 +9,7 @@ TagManager:
   - asteroid
   - Goblin
   - Slime
+  - Stone
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Water
   - UI
   - ENEMY
-  - 
-  - 
+  - PLAYER
+  - STONE
   - 
   - 
   - 
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1209739765
+    locked: 0
+  - name: button
+    uniqueID: 3515621271
     locked: 0
   - name: Misc
     uniqueID: 30882643
