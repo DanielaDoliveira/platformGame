@@ -15,6 +15,7 @@ namespace Game.Assets.Scripts
             Container.Bind<IEnemyLife>().To<EnemyLife>().AsTransient();
             Container.Bind<IGetCoin>().To<GetCoin>().AsSingle();
             Container.Bind<IPlayerLife>().To<PlayerLifeImplementation>().AsSingle();
+            Container.Bind<IPlayerAnimator>().To<PlayerAnimatorImplementation>().AsSingle();
             Container.Bind<IPuzzleButton>().To<PuzzleButtonImplementation>().AsTransient();
          //    Container.BindInterfacesAndSelfTo<EnemyLife>().AsSingle();
              

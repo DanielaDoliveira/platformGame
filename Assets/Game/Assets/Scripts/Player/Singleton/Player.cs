@@ -16,13 +16,14 @@ namespace Platformer.Assets.Game.Scripts.Player.Singleton
         public static float JumpForce;
         public static bool IsJumping, DoubleJump;
         public static bool Is_Attacking;
-      
+         
 
-        void Start()
+        public void Start()
         {
             _Rigidbody2D = GetComponent<Rigidbody2D>();
             Animator =GetComponentInChildren<Animator>();
         }
+        
 
        
     }

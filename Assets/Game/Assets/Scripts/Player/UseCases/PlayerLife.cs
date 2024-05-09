@@ -1,35 +1,55 @@
 using System;
-using Game.Assets.Scripts.Player.Singleton;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
-using Platformer.Assets.Game.Scripts.Player.Singleton;
-using Platformer.Assets.Game.Scripts.Player.UseCases;
+
 using UnityEngine;
 using Zenject;
 
 namespace Game.Assets.Scripts.Player.UseCases
 {
-    public class PlayerLife: MonoBehaviour
+    public class PlayerLife : MonoBehaviour
     {
+     
+        private LayerMask layer;
+        [SerializeField] private float radius;
         [Inject] private IPlayerLife _playerLife;
-        public int Health = 3;
-        public bool Recovery;
-        public float RecoveryCount = 2f;
-        public void Constructor(IPlayerLife playerLife)
+        [Inject] private IPlayerAnimator _playerAnimator;
+
+
+        public void Constructor(IPlayerLife playerLife, IPlayerAnimator playerAnimator)
         {
             _playerLife = playerLife;
+            _playerAnimator = playerAnimator;
         }
+
+        public void Start()
+        {
+            radius = 0.43f;
+            layer = LayerMask.GetMask("ENEMY", "SLIME", "GOBLIN");
+        }
+
+     
 
         public void OnHit()
         {
-            StartCoroutine(_playerLife.HitTimeCounter(PlayerAnimator.instance));
+            StartCoroutine(_playerLife.HitTimeCounter(_playerAnimator, GetComponentInChildren<Animator>()));
         }
+
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("ENEMY")|| other.gameObject.CompareTag("Slime")|| other.gameObject.CompareTag("Goblin"))
-            {
-          
+            var tags = 
+                        other.gameObject.CompareTag("ENEMY")
+                       || 
+                       other.gameObject.CompareTag("Slime") 
+                       ||
+                       other.gameObject.CompareTag("Goblin"); 
+            
+            if (tags)
                 OnHit();
-            }
+        
         }
+
+       
     }
 }
+

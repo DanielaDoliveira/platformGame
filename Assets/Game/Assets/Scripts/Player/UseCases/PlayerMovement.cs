@@ -1,15 +1,24 @@
 
 using Game.Assets.Scripts.Player.Singleton;
+using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Platformer.Assets.Game.Scripts.Player.Enum;
 
 using UnityEngine;
+using Zenject;
+
 namespace Platformer.Assets.Game.Scripts.Player.UseCases
 {
     public class PlayerMovement : MonoBehaviour
     {
 
+        
 
-       
+        [Inject] private IPlayerAnimator _playerAnimator;
+
+        public void Construct(IPlayerAnimator playerAnimator)
+        {
+            _playerAnimator = playerAnimator;
+        } 
     
        private void Start()
        {
@@ -48,8 +57,8 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                 {
                     if (!Singleton.Player.IsJumping && !Singleton.Player.Is_Attacking)
                     {
-                        PlayerAnimator.instance.Animate(PlayerEnum.walk);
-                       
+                        // PlayerAnimator.instance.Animate(PlayerEnum.walk);
+                       _playerAnimator.Animate(PlayerEnum.walk,Singleton.Player.Animator);
                     }
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     
@@ -59,7 +68,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                 {
                     if (!Singleton.Player.IsJumping && !Singleton.Player.Is_Attacking)
                     {
-                        PlayerAnimator.instance.Animate(PlayerEnum.walk);
+                        _playerAnimator.Animate(PlayerEnum.walk,Singleton.Player.Animator);
                        
                     }
                     transform.eulerAngles = new Vector3(0, 180, 0);
@@ -69,7 +78,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                 {
                     if (!Singleton.Player.IsJumping && !Singleton.Player.Is_Attacking)
                     {
-                        PlayerAnimator.instance.Animate(PlayerEnum.idle);
+                        _playerAnimator.Animate(PlayerEnum.idle,Singleton.Player.Animator);
                         
                     }
                     break;

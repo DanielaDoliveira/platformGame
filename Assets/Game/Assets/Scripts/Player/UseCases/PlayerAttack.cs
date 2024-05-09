@@ -4,7 +4,9 @@ using UnityEngine.PlayerLoop;
 using System.Collections;
 using Game.Assets.Scripts.Enemies;
 using Game.Assets.Scripts.Player.Singleton;
+using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Platformer.Assets.Game.Scripts.Player.Enum;
+using Zenject;
 
 namespace Platformer.Assets.Game.Scripts.Player.UseCases
 {
@@ -19,10 +21,19 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
         public LayerMask Enemy_Layer;
         
 
+        [Inject] private IPlayerAnimator _playerAnimator;
+
+        public void Construct(IPlayerAnimator playerAnimator)
+        {
+            _playerAnimator = playerAnimator;
+        }
+        
+        
         public void Start()
         {
             Singleton.Player.Is_Attacking = false;
-            
+            Enemy_Layer = LayerMask.GetMask("ENEMY", "SLIME", "GOBLIN");
+
         }
 
 
@@ -30,7 +41,8 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
         {
           
                 Singleton.Player.Is_Attacking = true;
-                PlayerAnimator.instance.Animate(PlayerEnum.attack);
+                // PlayerAnimator.instance.Animate(PlayerEnum.attack);
+                _playerAnimator.Animate(PlayerEnum.attack,Singleton.Player.Animator);
                 VerifyCollision();
 
                 StartCoroutine(OnAttack());
@@ -55,9 +67,6 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                     case "Goblin":
                         hit.GetComponent<GoblinLife>().OnHit();
                         break;
-                    default:
-                       
-                        break;
                 } 
                 
             }
@@ -67,6 +76,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
 
        public IEnumerator OnAttack()
         {
+          
             yield return new WaitForSeconds(time_attack);
             Singleton.Player.Is_Attacking = false;
             
