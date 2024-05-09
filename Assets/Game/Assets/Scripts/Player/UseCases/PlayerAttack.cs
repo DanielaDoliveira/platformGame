@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using System.Collections;
 using Game.Assets.Scripts.Enemies;
+using Game.Assets.Scripts.Player.Singleton;
 using Platformer.Assets.Game.Scripts.Player.Enum;
 
 namespace Platformer.Assets.Game.Scripts.Player.UseCases

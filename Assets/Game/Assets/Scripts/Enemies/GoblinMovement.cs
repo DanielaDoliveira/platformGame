@@ -1,4 +1,5 @@
 
+using Game.Assets.Scripts.Player.UseCases;
 using Platformer.Assets.Game.Scripts.Player.UseCases;
 using UnityEngine;
 

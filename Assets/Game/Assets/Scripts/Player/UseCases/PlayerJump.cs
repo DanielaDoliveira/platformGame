@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Assets.Scripts.Player.Singleton;
 using Platformer.Assets.Game.Scripts.Player.Enum;
 using Unity.VisualScripting;
 using UnityEngine;

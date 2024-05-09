@@ -1,4 +1,5 @@
 
+using Game.Assets.Scripts.Player.Singleton;
 using Platformer.Assets.Game.Scripts.Player.Enum;
 
 using UnityEngine;

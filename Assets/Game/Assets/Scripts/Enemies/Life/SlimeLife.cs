@@ -19,7 +19,7 @@ namespace Game.Assets.Scripts.Enemies
             _enemyLife = enemyLife;
         }
 
-        void Start()
+        private new void Start()
         {
             Health = 2;
             _enemyLife.Health = Health;
