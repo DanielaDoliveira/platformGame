@@ -1,4 +1,5 @@
 
+using System;
 using Game.Assets.Scripts.Player.UseCases;
 using Platformer.Assets.Game.Scripts.Player.UseCases;
 using UnityEngine;
@@ -22,9 +23,12 @@ namespace Game.Assets.Scripts.Enemies
        private void Start()
         {
             base.Start();
-            _isRight = true;
+           // _isRight = true;
             Speed = 2;
             VerifyPosition();
+            Rb2d = GetComponent<Rigidbody2D>();
+            Enemy_animator = GetComponent<EnemyAnimator>();
+  
         }
         void VerifyPosition()
         {
@@ -57,6 +61,11 @@ namespace Game.Assets.Scripts.Enemies
              else
                  Rb2d.velocity = new Vector2(-Speed, Rb2d.velocity.y);
             }
+            else
+            {
+                Enemy_animator.Animate(GoblinEnum.Idle);
+                Rb2d.velocity = Vector2.zero;
+            }
         }
 
 
@@ -65,28 +74,46 @@ namespace Game.Assets.Scripts.Enemies
             OnMove();
             GetPlayer();
             GetPlayerBehind();
-          
            
+        }
+
+        private void Update()
+        {
+          
+
         }
 
         private void GetPlayer()
         {
             var hit = Physics2D.Raycast(point.position,_direction,maxVision);
+    
             var isHitNotNull = hit.collider != null;
 
-            if (isHitNotNull && hit.transform.CompareTag("Player"))
+            if (hit.collider is not null  )
             {
-               
-         
-                _isFront = true;
-                var distance = Vector2.Distance(transform.position, hit.transform.position);
-                if (distance <= _stopDistance)
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PLAYER"))
                 {
-                    _isFront = false;
-                    Rb2d.velocity = Vector2.zero;
-                    Enemy_animator.Animate(GoblinEnum.Attack);
-                    hit.transform.GetComponent<PlayerLife>().OnHit();
+                    Debug.Log("Seeing player");
+                    _isFront = true;
+                    var distance = Vector2.Distance(transform.position, hit.transform.position);
+                    if (distance <= _stopDistance)
+                    {
+                        _isFront = false;
+                        Rb2d.velocity = Vector2.zero;
+                        Enemy_animator.Animate(GoblinEnum.Attack);
+                        hit.transform.GetComponent<PlayerLife>().OnHit();
+                    }
                 }
+         
+             
+              
+              
+              
+            }
+          
+            else
+            {
+                _isFront = false;
             }
 
         }
@@ -94,15 +121,25 @@ namespace Game.Assets.Scripts.Enemies
 /// Function called when Player has behind of enemy
 /// </summary>
         private void GetPlayerBehind()
-        {
+        { 
+            
+         
             var behindHit = Physics2D.Raycast(pointBehind.position,  - _direction, maxVision);
+        
             if (behindHit.collider!= null)
             {
-                if (behindHit.transform.CompareTag("Player"))
+                if (behindHit.transform.gameObject.layer == LayerMask.NameToLayer("PLAYER") )
                 {
+                    Debug.Log("Seeing player behind");
                     _isRight = !_isRight;
                     _isFront = true;
                     
+                }
+                
+             
+                else
+                {
+                    _isFront = false;
                 }
             }
         }

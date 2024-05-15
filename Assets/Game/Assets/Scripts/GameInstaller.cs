@@ -2,6 +2,8 @@ using Game.Assets.Scripts.Enemies;
 using Game.Assets.Scripts.Player.Singleton.Implementations;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Game.Assets.Scripts.Puzzles;
+using Game.Assets.Scripts.Puzzles.Singleton.Implementations;
+using Game.Assets.Scripts.Puzzles.Singleton.Interfaces;
 using Zenject;
 
 namespace Game.Assets.Scripts
@@ -14,6 +16,7 @@ namespace Game.Assets.Scripts
             Container.Bind<IGetCoin>().To<GetCoin>().AsSingle();
             Container.Bind<IPlayerLife>().To<PlayerLifeImplementation>().AsSingle();
             Container.Bind<IPlayerAnimator>().To<PlayerAnimatorImplementation>().AsSingle();
+            Container.Bind<IPuzzleActivatePlatform>().To<PuzzleActivateImplementation>().AsSingle();
             Container.Bind<IPuzzleButton>().To<PuzzleButtonImplementation>().AsTransient();
      
              

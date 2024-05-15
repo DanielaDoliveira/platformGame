@@ -29,7 +29,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
 
         }
 
-        // Update is called once per frame
+    
     
 
        public void Execute()
@@ -37,7 +37,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
             
                 if (!Singleton.Player.IsJumping)
                 {
-                    // PlayerAnimator.instance.Animate(PlayerEnum.jump);
+                   
                     _playerAnimator.Animate(PlayerEnum.jump,Singleton.Player.Animator);
                     Singleton.Player._Rigidbody2D.AddForce(Vector2.up * Singleton.Player.JumpForce,ForceMode2D.Impulse);
                     Singleton.Player.IsJumping = true;
@@ -45,7 +45,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                 }
                 else if ( Singleton.Player.DoubleJump)
                 {
-                    // PlayerAnimator.instance.Animate(PlayerEnum.jump);
+                  
                     _playerAnimator.Animate(PlayerEnum.jump,Singleton.Player.Animator);
                     Singleton.Player._Rigidbody2D.AddForce(Vector2.up * Singleton.Player.JumpForce,ForceMode2D.Impulse);
                     Singleton.Player.DoubleJump = false;

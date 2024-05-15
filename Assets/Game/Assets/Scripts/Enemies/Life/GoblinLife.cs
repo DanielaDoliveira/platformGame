@@ -17,6 +17,7 @@ namespace Game.Assets.Scripts.Enemies
         {
             Health = 3;
             _enemyLife.Health = Health;
+            Rb2d = GetComponent<Rigidbody2D>();
         }
         
         public void OnHit()
