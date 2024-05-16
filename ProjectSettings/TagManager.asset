@@ -25,7 +25,7 @@ TagManager:
   - GOBLIN
   - CAMERA
   - Wall
-  - 
+  - CHECKPOINT
   - 
   - 
   - 
@@ -60,12 +60,12 @@ TagManager:
   - name: Misc
     uniqueID: 30882643
     locked: 0
-  - name: Ground
-    uniqueID: 695715775
-    locked: 0
   - name: Enemy
     uniqueID: 2758137079
     locked: 0
   - name: Player
     uniqueID: 15024691
+    locked: 0
+  - name: Ground
+    uniqueID: 695715775
     locked: 0

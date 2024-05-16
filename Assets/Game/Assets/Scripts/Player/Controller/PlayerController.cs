@@ -12,9 +12,20 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases.Controller
         private PlayerJump _playerJump;
          private PlayerAttack _playerAttack;
         private PlayerMovement _playerMovement;
-      
 
-       
+
+        private PlayerController player;
+
+        private void Awake()
+        {
+            DontDestroyOnLoad(this);
+            if (player is null)
+                player = this;
+            
+            else
+                Destroy(player);
+            
+        }
 
         private void Start()
         {

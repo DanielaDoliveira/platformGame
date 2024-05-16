@@ -1,3 +1,4 @@
+using Game.Assets.Scripts.Door;
 using Game.Assets.Scripts.Enemies;
 using Game.Assets.Scripts.Player.Singleton.Implementations;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
@@ -18,8 +19,8 @@ namespace Game.Assets.Scripts
             Container.Bind<IPlayerAnimator>().To<PlayerAnimatorImplementation>().AsSingle();
             Container.Bind<IPuzzleActivatePlatform>().To<PuzzleActivateImplementation>().AsSingle();
             Container.Bind<IPuzzleButton>().To<PuzzleButtonImplementation>().AsTransient();
-     
-             
+            Container.Bind<IDoor>().To<DoorImplementation>().AsTransient();
+            Container.Bind<IPlayerFail>().To<PlayerFailImplementation>().AsTransient();
         }
     }
 }
