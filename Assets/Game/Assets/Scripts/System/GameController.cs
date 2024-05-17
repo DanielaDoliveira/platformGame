@@ -22,13 +22,14 @@ namespace Game.Assets.Scripts
         public void Start()
         {
          //   PlayerPrefs.DeleteAll();
+         
             Debug.Log("start");
             Points = _getCoin.CoinsNumber;
             if (PlayerPrefs.GetInt("COINS") > 0)
             {
                 _getCoin.CoinsNumber = PlayerPrefs.GetInt("COINS");
                 Points = _getCoin.CoinsNumber;
-                PointsText.text = Points.ToString();
+                PointsText.text = "x "+ Points.ToString();
             }
                 
                 
@@ -45,7 +46,7 @@ namespace Game.Assets.Scripts
         {
             
             Points = _getCoin.CoinsNumber;
-            PointsText.text = Points.ToString();
+            PointsText.text = "x "+ Points.ToString();
             SaveChanges();
         }
 

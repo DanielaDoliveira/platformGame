@@ -43,6 +43,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                 Singleton.Player.Is_Attacking = true;
                 // PlayerAnimator.instance.Animate(PlayerEnum.attack);
                 _playerAnimator.Animate(PlayerEnum.attack,Singleton.Player.Animator);
+                PlayerAudio.instance.PlaySfx(PlayerAudio.instance.HitFx);
                 VerifyCollision();
 
                 StartCoroutine(OnAttack());

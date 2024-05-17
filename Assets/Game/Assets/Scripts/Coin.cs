@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Game.Assets.Scripts.Player;
+using Game.Assets.Scripts.Player.Singleton;
+using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using ModestTree;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,13 +16,20 @@ namespace Game.Assets.Scripts
         [Inject]
         private IGetCoin _getCoin;
 
-       
+      
+      
 
         public int Points { get; set; }
        
-        public void Constructor(IGetCoin getCoin)
+        public void Constructor(IGetCoin getCoin )
         {
             _getCoin = getCoin;
+           
+        }
+
+        public void Start()
+        {
+          
         }
 
         private IEnumerator OnTriggerEnter2D(Collider2D other)
@@ -31,7 +41,7 @@ namespace Game.Assets.Scripts
                 {
                     GetComponent<Animator>().SetTrigger("hit");
                     Points = _getCoin.AddCoins();
-                    
+                    PlayerAudio.instance.PlaySfx(PlayerAudio.instance.CoinFx);
                     Debug.Log("Points: "+Points);
                 }
                 _getCoin.IsGetCoin = false;

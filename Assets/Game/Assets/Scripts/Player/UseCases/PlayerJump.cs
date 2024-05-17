@@ -39,6 +39,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                 {
                    
                     _playerAnimator.Animate(PlayerEnum.jump,Singleton.Player.Animator);
+                    PlayerAudio.instance.PlaySfx(PlayerAudio.instance.JumpFx);
                     Singleton.Player._Rigidbody2D.AddForce(Vector2.up * Singleton.Player.JumpForce,ForceMode2D.Impulse);
                     Singleton.Player.IsJumping = true;
                     Singleton.Player.DoubleJump = true;
@@ -47,6 +48,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                 {
                   
                     _playerAnimator.Animate(PlayerEnum.jump,Singleton.Player.Animator);
+                    PlayerAudio.instance.PlaySfx(PlayerAudio.instance.JumpFx);
                     Singleton.Player._Rigidbody2D.AddForce(Vector2.up * Singleton.Player.JumpForce,ForceMode2D.Impulse);
                     Singleton.Player.DoubleJump = false;
                 }

@@ -11,6 +11,7 @@ TagManager:
   - Slime
   - Stone
   - Wall
+  - COIN
   layers:
   - Default
   - TransparentFX
