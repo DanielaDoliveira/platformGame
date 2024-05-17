@@ -18,12 +18,19 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases.Controller
 
         private void Awake()
         {
-            DontDestroyOnLoad(this);
+           
             if (player is null)
+            {
                 player = this;
-            
-            else
-                Destroy(player);
+                DontDestroyOnLoad(this);
+            }
+            else if(player != this)
+            {
+                Destroy(player.gameObject);
+                player = this;
+                DontDestroyOnLoad(this);
+            }
+               
             
         }
 

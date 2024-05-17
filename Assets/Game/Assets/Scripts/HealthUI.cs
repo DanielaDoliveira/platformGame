@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Game.Assets.Scripts
 {
@@ -13,6 +15,18 @@ namespace Game.Assets.Scripts
         public Sprite HeartFilled;
         public Sprite HeartEmpty;
 
+        [Inject] private IPlayerLife _playerLife;
+
+        public HealthUI(IPlayerLife playerLife)
+        {
+            _playerLife = playerLife;
+        }
+
+        private void Start()
+        {
+            Health = _playerLife.Health;
+            HeartsCount = _playerLife.Health;
+        }
 
         private void Update()
         {
@@ -21,6 +35,7 @@ namespace Game.Assets.Scripts
 
         public void DrawHearts()
         {
+            Health = _playerLife.Health;
             for (int i = 0; i < Hearts.Count; i++)
             {
                 if (i < Health)

@@ -16,10 +16,19 @@ namespace Game.Assets.Scripts.Player.Singleton
         private void Awake()
         {
             if (instance is null)
+            {  
                 instance = this;
-            else
-                Destroy(instance);
-            DontDestroyOnLoad(instance);
+                DontDestroyOnLoad(instance);
+                
+            }
+            else if (instance != this)
+            {
+                Destroy(instance.gameObject);
+                instance = this;
+                DontDestroyOnLoad(instance);
+            }
+               
+         
             
         }
 

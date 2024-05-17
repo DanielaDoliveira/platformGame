@@ -12,6 +12,7 @@ TagManager:
   - Stone
   - Wall
   - COIN
+  - Canvas
   layers:
   - Default
   - TransparentFX

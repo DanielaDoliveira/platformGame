@@ -23,7 +23,7 @@ namespace Game.Assets.Scripts
         {
          //   PlayerPrefs.DeleteAll();
          
-            Debug.Log("start");
+           
             Points = _getCoin.CoinsNumber;
             if (PlayerPrefs.GetInt("COINS") > 0)
             {

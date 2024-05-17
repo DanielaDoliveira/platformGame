@@ -1,6 +1,7 @@
+using System;
 using System.Collections;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
-
+using Game.Assets.Scripts.Player.UseCases;
 using UnityEngine;
 using Zenject;
 
@@ -10,16 +11,17 @@ namespace Game.Assets.Scripts.Player.Singleton.Implementations
     {
 
         public int Health { get; set; } = 3;
+       
         public bool Recovery { get; set; }
         public float RecoveryCount { get; set; } = 3f;
         
    
      
-        public IEnumerator HitTimeCounter( IPlayerAnimator playerAnimator, Animator animator)
-        {   
-      
-       Recovery = true;
-       playerAnimator.Hit(animator);
+        public IEnumerator HitTimeCounter( IPlayerAnimator playerAnimator, Animator animator, Action gameOverFunction)
+        {
+            var timeToEndDeadAnimator = 0.6f;
+           Recovery = true;
+           playerAnimator.Hit(animator);
            Health -= 1;
             Debug.Log("Health: "+Health);
             yield return new WaitForSeconds(RecoveryCount * Time.deltaTime);
@@ -28,9 +30,14 @@ namespace Game.Assets.Scripts.Player.Singleton.Implementations
             {
                 Recovery = true;
                 playerAnimator.Dead(animator);
+                yield return new WaitForSeconds(timeToEndDeadAnimator);
+                GameObject.FindGameObjectWithTag("Player").SetActive(false);
+                gameOverFunction.Invoke();
                 
             }
         }
+
+     
 
      
       

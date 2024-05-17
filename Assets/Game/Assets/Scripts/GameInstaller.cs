@@ -1,5 +1,6 @@
 using Game.Assets.Scripts.Door;
 using Game.Assets.Scripts.Enemies;
+using Game.Assets.Scripts.GUI;
 using Game.Assets.Scripts.Player.Singleton.Implementations;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Game.Assets.Scripts.Puzzles;
@@ -13,6 +14,7 @@ namespace Game.Assets.Scripts
     {
         public override void InstallBindings()
         {
+            Container.Bind<IGUIController>().To<GUIControllerImplementation>().AsTransient();
             Container.Bind<IEnemyLife>().To<EnemyLife>().AsTransient();
             Container.Bind<IGetCoin>().To<GetCoin>().AsSingle();
             Container.Bind<IPlayerLife>().To<PlayerLifeImplementation>().AsSingle();
@@ -21,6 +23,7 @@ namespace Game.Assets.Scripts
             Container.Bind<IPuzzleButton>().To<PuzzleButtonImplementation>().AsTransient();
             Container.Bind<IDoor>().To<DoorImplementation>().AsTransient();
             Container.Bind<IPlayerFail>().To<PlayerFailImplementation>().AsTransient();
+           
         }
     }
 }

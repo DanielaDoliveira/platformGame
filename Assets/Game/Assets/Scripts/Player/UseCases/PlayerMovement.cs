@@ -22,7 +22,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
     
        private void Start()
        {
-           
+        
            Singleton.Player.Speed = 5f;
         
        }
