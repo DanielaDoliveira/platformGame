@@ -9,8 +9,9 @@ namespace Game.Assets.Scripts.GUI
     {
         public void RestartScene()
         {
-            
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void PlayGame()

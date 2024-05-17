@@ -88,13 +88,21 @@ namespace Game.Assets.Scripts.Player.UseCases
                
                     GameOverPanel = GameObject.FindGameObjectWithTag("Canvas");
                     _playerFail.GameOverPanel = GameOverPanel;
-                    _playerFail.GameOverPanel.SetActive(false);
+                  GameOverPanel.SetActive(false);
+                    SceneLoaded = true;
+                }
+                else if (GameOverPanel != null)
+                {
+                    GameOverPanel.SetActive(false);
                     SceneLoaded = true;
                 }
                 else
                 {
+                 
                     SceneLoaded = true;
+                    
                 }
+                
             }
         }
     }

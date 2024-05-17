@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
+using Game.Assets.Scripts.Player.UseCases;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -30,7 +31,14 @@ namespace Game.Assets.Scripts
 
         private void Update()
         {
+            if (!PlayerLife.SceneLoaded)
+            {
+              
+                HeartsCount = _playerLife.Health;
+                PlayerLife.SceneLoaded = true;
+            }
           DrawHearts();
+        
         }
 
         public void DrawHearts()

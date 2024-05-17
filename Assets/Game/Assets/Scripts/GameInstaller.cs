@@ -14,7 +14,7 @@ namespace Game.Assets.Scripts
     {
         public override void InstallBindings()
         {
-            Container.Bind<IGUIController>().To<GUIControllerImplementation>().AsTransient();
+            Container.Bind<IGUIController>().To<GUIControllerImplementation>().AsSingle();
             Container.Bind<IEnemyLife>().To<EnemyLife>().AsTransient();
             Container.Bind<IGetCoin>().To<GetCoin>().AsSingle();
             Container.Bind<IPlayerLife>().To<PlayerLifeImplementation>().AsSingle();

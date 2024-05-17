@@ -24,7 +24,7 @@ namespace Game.Assets.Scripts.Player
 
         public void InitialPosition()
         {
-            if (player is not null)
+            if (player != null)
                 player.position = transform.position;
         }
     }

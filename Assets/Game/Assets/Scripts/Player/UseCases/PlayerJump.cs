@@ -14,7 +14,9 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
     {
 
 
-
+        public Transform point;
+        public float radius = 0.22f;
+        private LayerMask layer;
         [Inject] private IPlayerAnimator _playerAnimator;
 
         public void Construct(IPlayerAnimator playerAnimator)
@@ -26,6 +28,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
             Singleton.Player.IsJumping = false;
             Singleton.Player.DoubleJump = false;
             Singleton.Player.JumpForce = 10;
+            layer = LayerMask.GetMask("GROUND","STONE");
 
         }
 
@@ -56,12 +59,31 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
             
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+      
+        private void Update()
         {
-            if (other.gameObject.layer == 3 || other.gameObject.layer == 8)
+            OnHitGround();
+        }
+
+        private void OnHitGround()
+        {
+            Collider2D hit = Physics2D.OverlapCircle(point.position, radius,layer);
+            if (hit != null)
             {
+                Debug.Log(layer);
                 Singleton.Player.IsJumping = false;
             }
+            else
+            {
+                Singleton.Player.IsJumping = true;
+            }
+            
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(point.position,radius);
+            Gizmos.color = Color.blue;
         }
     }
 }

@@ -45,8 +45,13 @@ namespace Game.Assets.Scripts
             {
               
                 GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerLife>().GameOverPanel.SetActive(true);
+                GameObject.FindGameObjectWithTag("Player").SetActive(false);
             }
-            CallCheckpoint();
+            else
+            {
+                CallCheckpoint();
+            }
+           
        
                 
            

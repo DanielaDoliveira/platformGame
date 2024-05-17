@@ -22,8 +22,8 @@ namespace Game.Assets.Scripts
         public void Start()
         {
          //   PlayerPrefs.DeleteAll();
-         
-           
+
+         PointsText = GameObject.Find("PointsText").GetComponent<TextMeshProUGUI>();
             Points = _getCoin.CoinsNumber;
             if (PlayerPrefs.GetInt("COINS") > 0)
             {
