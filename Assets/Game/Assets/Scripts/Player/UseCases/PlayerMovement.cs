@@ -48,6 +48,15 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
             Flip();
         }
 
+        public bool IsMoving()
+        {
+            if (Singleton.Player.Movement != 0)
+                return true;
+            
+            else
+                return false;
+        }
+
         void Flip()
         {
            

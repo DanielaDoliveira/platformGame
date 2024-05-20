@@ -19,6 +19,7 @@ namespace Game.Assets.Scripts.GUI
         {
             
             PlayerLife.SceneLoaded = false;
+            //
             _guiController.RestartScene();
             
         

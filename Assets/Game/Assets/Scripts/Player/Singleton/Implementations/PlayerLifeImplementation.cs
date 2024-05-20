@@ -33,8 +33,10 @@ namespace Game.Assets.Scripts.Player.Singleton.Implementations
                 yield return new WaitForSeconds(timeToEndDeadAnimator);
                 GameObject.FindGameObjectWithTag("Player").SetActive(false);
                 gameOverFunction.Invoke();
+                PlayerPrefs.SetInt("HEALTH", 3);
                 
             }
+            PlayerPrefs.SetInt("HEALTH",Health);
         }
 
      

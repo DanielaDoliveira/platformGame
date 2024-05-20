@@ -1,6 +1,5 @@
-using System;
+
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using System.Collections;
 using Game.Assets.Scripts.Enemies;
 using Game.Assets.Scripts.Player.Singleton;

@@ -35,6 +35,8 @@ namespace Game.Assets.Scripts.Player.UseCases
                 if(GameOverPanel is null)
                     GameOverPanel = GameObject.FindGameObjectWithTag("Canvas");
             }
+
+           
         }
 
         public void Start()

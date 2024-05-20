@@ -33,6 +33,7 @@ namespace Game.Assets.Scripts
         public IEnumerator PlayerAnimationEventsOnFall(float time )
         {
             _playerLife.Health -= 1;
+            PlayerPrefs.SetInt("HEALTH", _playerLife.Health);
             var count = 0;
             while (count < time)
 
@@ -46,10 +47,12 @@ namespace Game.Assets.Scripts
               
                 GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerLife>().GameOverPanel.SetActive(true);
                 GameObject.FindGameObjectWithTag("Player").SetActive(false);
+                PlayerPrefs.SetInt("HEALTH", 3);
             }
             else
             {
                 CallCheckpoint();
+             
             }
            
        
