@@ -13,22 +13,30 @@ namespace Game.Assets.Scripts.Puzzles
         public Animator PlatformAnimator;
         public AudioClip clip;
         private Animator _animator;
+        public AudioClip ClipPlatform;
+        public AudioClip ClipPlatformFast;
         private bool isCoroutine;
         [Inject] private IButtonSound _buttonSound;
-        
-    
+        [Inject] private IPlatformSound _platformSound;
 
-        public PuzzleActivationPlatform( IButtonSound buttonSound)
+        public PuzzleActivationPlatform(IButtonSound buttonSound, IPlatformSound platformSound)
         {
-           
             _buttonSound = buttonSound;
+            _platformSound = platformSound;
         }
+
+
+       
 
         
         public void Start()
         {
             _animator = GetComponent<Animator>();
             isCoroutine = false;
+            _platformSound.IsCoroutine = false;
+            _platformSound.Source = GameObject.FindWithTag("PlatformSound").GetComponent<AudioSource>();
+            _platformSound.Clip = ClipPlatform;
+            _platformSound.ClipFast = ClipPlatformFast;
             PlatformTemp.SetActive(false);
             _buttonSound.IsPlayingMusic = false;
             _buttonSound.Source = GetComponent<AudioSource>();
@@ -39,8 +47,10 @@ namespace Game.Assets.Scripts.Puzzles
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                if(!isCoroutine)
+                if (!isCoroutine)
                     StartCoroutine(OnPressButton());
+                
+                StartCoroutine(_platformSound.PlaySound());
 
             }
             
@@ -65,6 +75,7 @@ namespace Game.Assets.Scripts.Puzzles
         public IEnumerator OnPressButton()
         {
             isCoroutine = true;
+       
             _animator.SetBool("isPressed",true);
             StartCoroutine(_buttonSound.StartButtonSound());
             PlatformAnimator.Play("ground_idle");
