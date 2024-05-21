@@ -9,7 +9,7 @@ namespace Game.Assets.Scripts
     {
 
         [Inject] private IPlayerLife _playerLife;
-
+        public HealthUI _HealthUI;
         public GetAttributes(IPlayerLife playerLife)
         {
             _playerLife = playerLife;
@@ -17,7 +17,13 @@ namespace Game.Assets.Scripts
         public void Start()
         {
            var health= PlayerPrefs.GetInt("HEALTH");
+           if (health <= 0)
+           {
+               health = _playerLife.Health;
+               _HealthUI.HeartsCount = _playerLife.Health;
+           }
            _playerLife.Health = health;
+           _HealthUI.HeartsCount = health;
         }
     }
 }

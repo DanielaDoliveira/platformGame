@@ -10,7 +10,7 @@ namespace Game.Assets.Scripts
 {
     public class HealthUI: MonoBehaviour
     {
-        public int Health;
+        public int Health = 3;
         public int HeartsCount;
         public List<Image> Hearts;
         public Sprite HeartFilled;

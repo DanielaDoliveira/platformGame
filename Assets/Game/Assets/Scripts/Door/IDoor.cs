@@ -1,11 +1,14 @@
 
 using System;
 using System.Collections;
+using UnityEngine.Events;
+
 namespace Game.Assets.Scripts.Door
 {
     public interface IDoor
     {
         public float Time { get; set; }
+        public UnityEvent OnPassDoor { get; set; }
         
         /// <summary>
         /// Called when player touch the object with script. 
@@ -19,5 +22,7 @@ namespace Game.Assets.Scripts.Door
         /// <param name="scene">Scene to load</param>
         /// <returns></returns>
         public IEnumerator LoadScene(float time, int scene);
+
+        public void Load(int scene);
     }
 }
