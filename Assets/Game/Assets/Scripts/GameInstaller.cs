@@ -20,6 +20,7 @@ namespace Game.Assets.Scripts
             Container.Bind<IPlayerLife>().To<PlayerLifeImplementation>().AsSingle();
             Container.Bind<IPlayerAnimator>().To<PlayerAnimatorImplementation>().AsSingle();
             Container.Bind<IPuzzleActivatePlatform>().To<PuzzleActivateImplementation>().AsSingle();
+            Container.Bind<IButtonSound>().To<ButtonSoundImplementation>().AsSingle();
             Container.Bind<IPuzzleButton>().To<PuzzleButtonImplementation>().AsTransient();
             Container.Bind<IDoor>().To<DoorImplementation>().AsTransient();
             Container.Bind<IPlayerFail>().To<PlayerFailImplementation>().AsTransient();
