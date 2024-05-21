@@ -11,25 +11,26 @@ namespace Game.Assets.Scripts.Puzzles
    
      
         [Inject] private IPuzzleButton _puzzleButton;
+        [Inject] private IButtonSound _buttonSound;
+     
       
-       [SerializeField] private AudioSource _source;
-       private bool isPlayingMusic;
-       private float timer = 0.208f;
-[SerializeField]private AudioClip clip;
-        public void Constructor(IPuzzleButton puzzleButton)
+     
+        [SerializeField]private AudioClip clip;
+        public PuzzleButton(IPuzzleButton puzzleButton, IButtonSound buttonSound)
         {
             _puzzleButton = puzzleButton;
-           
+            _buttonSound = buttonSound;
         }
-
 
         private void Start()
         {
             _puzzleButton.Anim = GetComponent<Animator>();
             _puzzleButton.Layer  = LayerMask.GetMask("PLAYER","STONE");
             _puzzleButton.BarrierAnim = BarrierAnimator ;
-            _source = GetComponent<AudioSource>();
-            isPlayingMusic = false;
+            _buttonSound.Source = GetComponent<AudioSource>();
+            _buttonSound.ButtonClip = clip;
+           
+            
 
         }
 
@@ -44,30 +45,18 @@ namespace Game.Assets.Scripts.Puzzles
             if (hit != null)
             {
                _puzzleButton.OnPressed(_puzzleButton.Anim, _puzzleButton.BarrierAnim);
-               StartCoroutine(StartButtonSound());
+               StartCoroutine(_buttonSound.StartButtonSound());
                 hit = null;
                 
             }
             else
             {
                 _puzzleButton.OnExit(_puzzleButton.Anim, _puzzleButton.BarrierAnim);
-                isPlayingMusic = false;
-                _source.Stop();
-                    
+                _buttonSound.IsPlayingMusic = false;
+              _buttonSound.Source.Stop();
             }
         }
 
-        public IEnumerator StartButtonSound()
-        {
-            if (!isPlayingMusic)
-            {
-                isPlayingMusic = true;
-                _source.PlayOneShot(clip);
-                yield return new WaitForSeconds(timer);
-                _source.Stop();
-            }
-            
-            
-        }
+      
     }
 }
