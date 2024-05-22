@@ -23,6 +23,11 @@ namespace Game.Assets.Scripts.GUI
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+        public void IntroMenu()
+        {
+            SceneManager.LoadScene(0);
+        }
+
         public void ExitGame()
         {
             Application.Quit();

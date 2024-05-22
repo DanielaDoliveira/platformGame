@@ -11,7 +11,7 @@ namespace Game.Assets.Scripts.Player.Singleton
         public AudioClip JumpFx;
         public  AudioClip HitFx;
         public  AudioClip CoinFx;
-    
+        public AudioClip HurtFx;
         public static PlayerAudio instance;
         private void Awake()
         {

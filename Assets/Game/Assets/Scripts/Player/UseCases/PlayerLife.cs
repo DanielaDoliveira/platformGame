@@ -1,5 +1,6 @@
 using System;
 using Game.Assets.Scripts.Exceptions;
+using Game.Assets.Scripts.Player.Singleton;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Game.Assets.Scripts.Player.UseCases
      
         private LayerMask layer;
         [SerializeField] private float radius;
+     
        public static bool SceneLoaded ;
         public GameObject GameOverPanel;
         [Inject] private IPlayerLife _playerLife;
@@ -72,10 +74,13 @@ namespace Game.Assets.Scripts.Player.UseCases
                        || 
                        other.gameObject.CompareTag("Slime") 
                        ||
-                       other.gameObject.CompareTag("Goblin"); 
-            
+                       other.gameObject.CompareTag("Goblin");
+
             if (tags)
+            {
+                PlayerAudio.instance.PlaySfx(PlayerAudio.instance.HurtFx);
                 OnHit();
+            }
         
         }
 

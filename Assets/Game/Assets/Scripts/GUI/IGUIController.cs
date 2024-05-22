@@ -5,6 +5,7 @@ namespace Game.Assets.Scripts.GUI
 {
     public interface IGUIController
     {
+        public void IntroMenu();
         public void RestartScene();
         public void PlayGame();
         public void ExitGame();

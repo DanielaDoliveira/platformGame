@@ -22093,6 +22093,7 @@ MonoBehaviour:
   JumpFx: {fileID: 8300000, guid: e683ca87e29a04471832727eb6b43be1, type: 3}
   HitFx: {fileID: 8300000, guid: a570a295a5e734e299868231d6707a18, type: 3}
   CoinFx: {fileID: 8300000, guid: 272f249e1a5f54fcb93b7c878423ac61, type: 3}
+  HurtFx: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
 --- !u!1 &1723488514
 GameObject:
   m_ObjectHideFlags: 0

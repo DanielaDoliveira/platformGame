@@ -33,6 +33,11 @@ namespace Game.Assets.Scripts.GUI
            _guiController.PlayGame();
         }
 
+        public void MainMenu()
+        {
+            _guiController.IntroMenu();
+        }
+
         public void OnExit()
         {
             StartCoroutine(_guiController.DelayAndStartScene(timerToDelay, _guiController.ExitGame));
