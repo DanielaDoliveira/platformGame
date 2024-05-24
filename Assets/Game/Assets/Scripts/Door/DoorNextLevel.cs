@@ -35,10 +35,18 @@ namespace Game.Assets.Scripts.Door
         private void OnTriggerEnter2D(Collider2D other)
         {
            
+           
             if (other.gameObject.CompareTag("Player"))
             {
                 _door.OnGoal(LoadNextLevel);
             }
+            
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if(other.gameObject.CompareTag("Player"))
+                GameFinished(); 
         }
 
         public void LoadNextLevel()
@@ -47,6 +55,13 @@ namespace Game.Assets.Scripts.Door
       //  _door.Load(scene);
             _source.PlayOneShot(_source.clip);
             StartCoroutine(_door.LoadScene(Time, scene));
+        }
+
+        public void GameFinished()
+        {
+            _source.PlayOneShot(_source.clip);
+            OnPassDoor.Invoke();
+            
         }
 
       

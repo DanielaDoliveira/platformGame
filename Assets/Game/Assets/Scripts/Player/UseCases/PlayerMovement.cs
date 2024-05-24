@@ -57,6 +57,12 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
                 return false;
         }
 
+        public void CancelMovement()
+        {
+            Singleton.Player._Rigidbody2D.velocity = Vector2.zero;
+            _playerAnimator.Animate(PlayerEnum.idle,Singleton.Player.Animator);
+        }
+
         void Flip()
         {
            

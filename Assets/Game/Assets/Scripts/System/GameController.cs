@@ -46,7 +46,7 @@ namespace Game.Assets.Scripts
         {
             
             Points = _getCoin.CoinsNumber;
-            PointsText.text = "x "+ Points.ToString();
+             PointsText.text = "x "+ Points.ToString();
             SaveChanges();
         }
 
