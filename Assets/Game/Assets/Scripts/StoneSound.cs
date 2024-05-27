@@ -94,13 +94,7 @@ namespace Game.Assets.Scripts
             }
         }
 
-        public void OnDrawGizmos()
-        {
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawRay(PointRight.position,Vector2.right *MaxRay);
-            Gizmos.DrawRay(PointLeft.position, Vector2.left *MaxRay);
-          
-        }
+     
     }
 
 }

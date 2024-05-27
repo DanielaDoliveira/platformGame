@@ -5,6 +5,7 @@ using Game.Assets.Scripts.Enemies;
 using Game.Assets.Scripts.Player.Singleton;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Platformer.Assets.Game.Scripts.Player.Enum;
+using UnityEngine.Events;
 using Zenject;
 
 namespace Platformer.Assets.Game.Scripts.Player.UseCases
@@ -15,7 +16,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
     {
         [SerializeField]private Transform point;
         [SerializeField] private float radius;
-      
+        
         private float time_attack = 0.22f;
         public LayerMask Enemy_Layer;
         

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Platformer.Assets.Game.Scripts.Player.UseCases.Controller;
 
 namespace Game.Assets.Scripts.GUI
 {

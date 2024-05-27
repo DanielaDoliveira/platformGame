@@ -36,5 +36,10 @@ namespace Game.Assets.Scripts.Puzzles.Singleton.Implementations
             source.clip = clip;
             source.Play();
         }
+
+        public void StopAll()
+        {
+            Source.Stop();
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace Game.Assets.Scripts.Puzzles
             }
            
         }
+      
         
     }
 }

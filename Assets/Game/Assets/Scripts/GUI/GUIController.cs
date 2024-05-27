@@ -1,6 +1,7 @@
 using System;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Game.Assets.Scripts.Player.UseCases;
+using Platformer.Assets.Game.Scripts.Player.UseCases.Controller;
 using UnityEngine;
 using Zenject;
 
@@ -34,7 +35,6 @@ namespace Game.Assets.Scripts.GUI
             PlayerLife.SceneLoaded = false;
             PlayerPrefs.DeleteKey("COINS");
             PlayerPrefs.DeleteKey("HEALTH");
-       
            _guiController.PlayGame();
         }
 

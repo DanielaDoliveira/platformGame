@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Platformer.Assets.Game.Scripts.Player.UseCases.Controller;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,7 +20,7 @@ namespace Game.Assets.Scripts.GUI
 
         public void PlayGame()
         {
-            
+           
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 

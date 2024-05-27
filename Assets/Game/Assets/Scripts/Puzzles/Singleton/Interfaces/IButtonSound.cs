@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,5 +11,6 @@ namespace Game.Assets.Scripts.Puzzles.Singleton.Interfaces
         public AudioSource Source { get; set; }
         public AudioClip ButtonClip { get; set; }
         public IEnumerator StartButtonSound();
+     
     }
 }

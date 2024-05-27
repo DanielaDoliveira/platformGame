@@ -23,7 +23,7 @@ namespace Game.Assets.Scripts.Player.Singleton.Implementations
            Recovery = true;
            playerAnimator.Hit(animator);
            Health -= 1;
-            Debug.Log("Health: "+Health);
+            
             yield return new WaitForSeconds(RecoveryCount * Time.deltaTime);
             Recovery = false;
             if (Health <= 0 && !Recovery)

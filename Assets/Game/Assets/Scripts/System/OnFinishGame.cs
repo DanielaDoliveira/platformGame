@@ -1,16 +1,11 @@
-using System;
 using System.Collections;
-using System.Security.Cryptography;
 using Com.LuisPedroFonseca.ProCamera2D;
 using Game.Assets.Scripts.Player.Singleton;
-using Platformer.Assets.Game.Scripts.Player.UseCases;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-namespace Game
+namespace Game.Assets.Scripts.System
 {
     public class OnFinishGame: MonoBehaviour
     {
@@ -32,8 +27,10 @@ namespace Game
            
             _source.PlayOneShot(_source.clip);
             FinishPanel.SetActive(true);
+            PlayerAudio.instance._AudioSource.Stop();//aquui
             OnFinish.Invoke();
-            Destroy(PlayerAudio.instance.gameObject);
+            PlayerAudio.instance._AudioSource.mute = true;
+         //   Destroy(PlayerAudio.instance.gameObject);
             yield return new WaitForSeconds(10f);
             Debug.Log("finish");
             SceneManager.LoadScene("Finish");

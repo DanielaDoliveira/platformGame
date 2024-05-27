@@ -74,11 +74,7 @@ namespace Game.Assets.Scripts.Enemies
             transform.eulerAngles = new Vector3(0, rotationY, 0);
         }
         
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.DrawWireSphere(point.position,radius);
-           
-        }
+  
 
 
         

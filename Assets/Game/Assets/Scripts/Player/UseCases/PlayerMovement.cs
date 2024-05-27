@@ -4,6 +4,7 @@ using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Platformer.Assets.Game.Scripts.Player.Enum;
 
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 namespace Platformer.Assets.Game.Scripts.Player.UseCases
@@ -11,8 +12,8 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
     public class PlayerMovement : MonoBehaviour
     {
 
-        
 
+      
         [Inject] private IPlayerAnimator _playerAnimator;
 
         public void Construct(IPlayerAnimator playerAnimator)
@@ -32,7 +33,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
         public void Move()
         {
          Singleton.Player.Movement = Input.GetAxis("Horizontal");
-  
+         
          Singleton.Player._Rigidbody2D.velocity = 
              new Vector2(
                  Singleton.Player.Movement * Singleton.Player.Speed, 
@@ -52,9 +53,8 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
         {
             if (Singleton.Player.Movement != 0)
                 return true;
-            
-            else
-                return false;
+
+            return false;
         }
 
         public void CancelMovement()

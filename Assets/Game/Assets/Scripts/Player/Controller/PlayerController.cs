@@ -12,10 +12,10 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases.Controller
         private PlayerJump _playerJump;
          private PlayerAttack _playerAttack;
         private PlayerMovement _playerMovement;
-
-
+     
+        private bool enableJump, enableAttack;
         private PlayerController player;
-
+  
    
 
         private void Start()
@@ -25,27 +25,33 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases.Controller
             _playerAttack = GetComponent<PlayerAttack>();
         }
 
+       
         public void FixedUpdate()
         {
-   
+           
             _playerMovement.Execute();
+     
         }
 
         public void Update()
         {
+           
             Inputs();
+           
         }
 
         public void Inputs()
         {
+            
             if (Input.GetButtonDown("Jump"))
             {
-                
+           
                 _playerJump.Execute();
             }
 
             if (Input.GetButtonDown("Fire1"))
             {
+
                 _playerAttack.Execute();
             }
         }

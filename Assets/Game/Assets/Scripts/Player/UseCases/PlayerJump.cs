@@ -6,6 +6,7 @@ using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Platformer.Assets.Game.Scripts.Player.Enum;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 namespace Platformer.Assets.Game.Scripts.Player.UseCases
@@ -17,6 +18,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
         public Transform point;
         public float radius = 0.22f;
         private LayerMask layer;
+     
         [Inject] private IPlayerAnimator _playerAnimator;
 
         public void Construct(IPlayerAnimator playerAnimator)
@@ -70,7 +72,7 @@ namespace Platformer.Assets.Game.Scripts.Player.UseCases
             Collider2D hit = Physics2D.OverlapCircle(point.position, radius,layer);
             if (hit != null)
             {
-                Debug.Log(layer);
+              
                 Singleton.Player.IsJumping = false;
             }
             else

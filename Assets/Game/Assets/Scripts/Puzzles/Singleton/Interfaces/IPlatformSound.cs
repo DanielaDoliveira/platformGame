@@ -11,5 +11,6 @@ namespace Game.Assets.Scripts.Puzzles.Singleton.Interfaces
         public float Timer{ get; set; }
         public bool IsCoroutine{ get; set; }
         public IEnumerator PlaySound();
+        public void StopAll();
     }
 }

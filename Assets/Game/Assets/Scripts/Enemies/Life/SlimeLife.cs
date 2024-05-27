@@ -27,7 +27,7 @@ namespace Game.Assets.Scripts.Enemies
         
         public void OnHit()
         {
-          Debug.Log("Slime "+Health);
+        
             _enemyLife.OnHit(Speed,GetComponent<EnemyAnimator>());
         }
 

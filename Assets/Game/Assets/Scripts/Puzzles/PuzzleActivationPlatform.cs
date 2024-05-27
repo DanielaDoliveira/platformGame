@@ -55,6 +55,13 @@ namespace Game.Assets.Scripts.Puzzles
             }
             
         }
+
+
+        public void StopMusic()
+        {
+            _platformSound.StopAll();
+        }
+        
         public IEnumerator WhileEnabledButton()
         { 
             yield return new WaitForSeconds(Count);
