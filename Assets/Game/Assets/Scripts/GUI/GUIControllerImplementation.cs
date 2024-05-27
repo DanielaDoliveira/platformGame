@@ -9,11 +9,11 @@ namespace Game.Assets.Scripts.GUI
     {
         public void RestartScene()
         {
-           if(SceneManager.GetActiveScene().buildIndex<3)
-                SceneManager.LoadScene(1);
+           if(SceneManager.GetActiveScene().buildIndex<4)
+                SceneManager.LoadScene(2);
            else
            {
-               SceneManager.LoadScene(3);
+               SceneManager.LoadScene(4);
            }
         }
 

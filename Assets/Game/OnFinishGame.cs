@@ -29,6 +29,7 @@ namespace Game
         {
             Camera.AddCameraTarget(player_target,10f,2f);
             Camera.Zoom(0.5f);
+           
             _source.PlayOneShot(_source.clip);
             FinishPanel.SetActive(true);
             OnFinish.Invoke();

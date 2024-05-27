@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Game.Assets.Scripts.Player;
+using Game.Assets.Scripts.Player.Singleton;
 using Game.Assets.Scripts.Player.Singleton.Interfaces;
 using Game.Assets.Scripts.Player.UseCases;
 using UnityEngine;
@@ -32,7 +33,17 @@ namespace Game.Assets.Scripts
 
         public IEnumerator PlayerAnimationEventsOnFall(float time )
         {
-            _playerLife.Health -= 1;
+            PlayerAudio.instance.PlaySfx(PlayerAudio.instance.HurtFx);
+            if (PlayerPrefs.GetInt("HEALTH") <= 0 )
+            {
+                _playerLife.Health -= 1;
+            }
+            else
+            {
+                var _health = PlayerPrefs.GetInt("HEALTH");
+                _health -= 1;
+                _playerLife.Health = _health;
+            }
             PlayerPrefs.SetInt("HEALTH", _playerLife.Health);
             var count = 0;
             while (count < time)
@@ -47,7 +58,7 @@ namespace Game.Assets.Scripts
               
                 GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerLife>().GameOverPanel.SetActive(true);
                 GameObject.FindGameObjectWithTag("Player").SetActive(false);
-                PlayerPrefs.SetInt("HEALTH", 3);
+              
             }
             else
             {

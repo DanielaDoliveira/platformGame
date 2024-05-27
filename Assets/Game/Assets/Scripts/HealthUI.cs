@@ -15,7 +15,7 @@ namespace Game.Assets.Scripts
         public List<Image> Hearts;
         public Sprite HeartFilled;
         public Sprite HeartEmpty;
-
+        public static HealthUI instance;
         [Inject] private IPlayerLife _playerLife;
 
         public HealthUI(IPlayerLife playerLife)
@@ -23,10 +23,11 @@ namespace Game.Assets.Scripts
             _playerLife = playerLife;
         }
 
+       
+
         private void Start()
         {
-            Health = _playerLife.Health;
-            HeartsCount = _playerLife.Health;
+         //   PlayerPrefs.SetInt("HEALTH", 3);
         }
 
         private void Update()
@@ -43,7 +44,22 @@ namespace Game.Assets.Scripts
 
         public void DrawHearts()
         {
-            Health = _playerLife.Health;
+            
+            var health= PlayerPrefs.GetInt("HEALTH");
+            if (health > 0 )
+            {
+                Health = health;
+                HeartsCount = 3;
+            }
+          else
+            {
+                Health = _playerLife.Health;
+                HeartsCount = Health;
+               
+            }
+            
+            
+         
             for (int i = 0; i < Hearts.Count; i++)
             {
                 if (i < Health)
