@@ -5,3 +5,7 @@
 
 
   </p>
+<h2 align="center"> Build Information</h2>
+  <p align = "center">
+    Follow link: <a href "https://github.com/DanielaDoliveira/plarformGameBuilds"> Platform Builds </a>
+  </p>
